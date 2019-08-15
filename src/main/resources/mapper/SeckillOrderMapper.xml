@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mh7649.springbootseckill.mapper.SeckillOrderMapper">
+    <select id="findById" resultType="SeckillOrder">
+        select so.seckill_id,
+               so.user_phone,
+               so.create_time,
+               so.money,
+               so.state,
+               s.create_time "seckill.createTime",
+               s.end_time    "endTime",
+               s.seckill_id  "seckill.seckillId",
+               s.cost_price  "costPrice",
+               s.price       "price",
+               s.image       "image",
+               s.title       "title",
+               s.start_time  "startTime"
+        from seckill s
+                 inner join seckill_order so on so.seckill_id = s.seckill_id
+        where so.seckill_id = #{seckillId}
+    </select>
+</mapper>
