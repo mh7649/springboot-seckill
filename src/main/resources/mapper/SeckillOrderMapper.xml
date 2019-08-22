@@ -18,6 +18,10 @@
                s.start_time  "startTime"
         from seckill s
                  inner join seckill_order so on so.seckill_id = s.seckill_id
-        where so.seckill_id = #{seckillId}
+        where so.seckill_id = #{seckillId} and so.user_phone = #{phone}
     </select>
+
+    <insert id="insertOrder">
+        insert ignore into seckill_order(seckill_id, money, user_phone) values (#{seckillId}, #{money}, #{phone})
+    </insert>
 </mapper>

@@ -20,7 +20,7 @@ public interface SeckillMapper {
      * @param killTime 秒杀时间
      * @return 返回此SQL更新的记录数， 如果>=表示更新成功
      */
-    int reduceStock(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
+    int reduceStock(@Param("seckillId") long seckillId, @Param("seckillTime") Date killTime);
 
     /**
      * 插入购买订单明细
@@ -30,7 +30,9 @@ public interface SeckillMapper {
      * @param userPhone 秒杀的用户
      * @return 返回该SQL更新的记录数，如果>=1则更新成功
      */
-    int insertOrder(@Param("seckillId") long seckillId, @Param("money") BigDecimal money, @Param("userPhone") String userPhone);
+    int insertOrder(@Param("seckillId") long seckillId, @Param("money") BigDecimal money, @Param("userPhone") long userPhone);
 
     List<Seckill> findAll();
+
+    Seckill findById(long seckillId);
 }

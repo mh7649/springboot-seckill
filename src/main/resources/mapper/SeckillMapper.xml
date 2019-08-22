@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mh7649.springbootseckill.mapper.SeckillMapper">
     <update id="reduceStock">
-        update seckill set  stock_count = stock_count - 1
+        update ignore seckill set  stock_count = stock_count - 1
         where seckill_id = #{seckillId}
         and start_time &lt; #{seckillTime}
         and end_time &gt; #{seckillTime}
@@ -17,5 +17,9 @@
 
     <select id="findAll" resultType="Seckill">
         select * from seckill
+    </select>
+
+    <select id="findById" resultType="Seckill">
+        select * from seckill where seckill_id = #{seckillId}
     </select>
 </mapper>

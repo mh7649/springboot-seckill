@@ -1,6 +1,9 @@
 package com.mh7649.springbootseckill.mapper;
 
+import java.math.BigDecimal;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mh7649.springbootseckill.entity.SeckillOrder;
 
@@ -12,5 +15,7 @@ public interface SeckillOrderMapper {
      * @param seckillId id
      * @return 订单
      */
-    SeckillOrder findById(long seckillId);
+    SeckillOrder findById(@Param("seckillId") long seckillId, @Param("phone") long phone);
+
+    int insertOrder(@Param("seckillId") long seckillId, @Param("money")BigDecimal money, @Param("phone") long phone);
 }
